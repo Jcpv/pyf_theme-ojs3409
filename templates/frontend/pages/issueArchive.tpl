@@ -19,7 +19,7 @@
 		{translate key="archive.archivesPageNumber" pageNumber=$prevPage+1}
 	{else}
 		{translate key="archive.archives"}
-	{/if}
+	{/if} 
 {/capture}
 {include file="frontend/components/header.tpl" pageTitleTranslated=$pageTitle}
 
@@ -34,7 +34,8 @@
 	{else}
 
 		{* List issues *}
-		<div class="issues media-list">
+		{* Jc - PARA MODIFICAR EL ESPACIO EN DONDE SE PONEN LAS IMG DE LOS VOL ANTERIORES*} 
+		<div class="row issues media-list">
 			{foreach from=$issues item="issue"}
 				{include file="frontend/objects/issue_summary.tpl"}
 			{/foreach}

@@ -10,42 +10,53 @@
  * @uses $issue Issue The issue
  *}
 
- {* - Jc - Ajustar columna para SM y MD para mostrar Archivos *}
+{* - Jc - Ajustar columna para SM y MD para mostrar Archivos *}
+{* VOLUMENES ANTERIORES *}
 
-<div class="issue-summary media">
+<div class="colP-sm-12 colP-md-6 py-3 px-2">
+	<div class="p-4 py-4">
 
-	{* Retrieve separate entries for $issueTitle and $issueSeries *}
-	{assign var=issueTitle value=$issue->getLocalizedTitle()}
-	{assign var=issueSeries value=$issue->getIssueSeries()}
-	{assign var=issueDescription value=$issue->getLocalizedDescription()}
+		{* Retrieve separate entries for $issueTitle and $issueSeries *}
+		{assign var=issueTitle value=$issue->getLocalizedTitle()}
+		{assign var=issueSeries value=$issue->getIssueSeries()}
+		{assign var=issueDescription value=$issue->getLocalizedDescription()}
 
-	{* Show cover image and use cover description *}
-	{if $issue->getLocalizedCoverImage()}
-		<div class="media-left">
-			<a class="cover" href="{url|escape op="view" path=$issue->getBestIssueId($currentJournal)}">
-				<img class="media-object" src="{$issue->getLocalizedCoverImageUrl()|escape}" alt="{$issue->getLocalizedCoverImageAltText()|escape|default:''}">
-			</a>
-		</div>
-	{/if}
-
-
-	<div class="media-body">
-		<h2 class="media-heading">
-			<a class="title" href="{url|escape op="view" path=$issue->getBestIssueId($currentJournal)}">
-				{if $issueTitle}
-					{$issueTitle|escape}
-				{else}
-					{$issueSeries|escape}
-				{/if}
-			</a>
-			{if $issueTitle}
-				<div class="series lead">
-					{$issueSeries|escape}
+		{* Show cover image and use cover description *}
+		<div class="card border-0 shadow" style="width: 18rem;">
+			{if $issue->getLocalizedCoverImage()}
+				<div class="">
+					<a class="cover" href="{url|escape op="view" path=$issue->getBestIssueId($currentJournal)}">
+						<img class="img-fluid" src="{$issue->getLocalizedCoverImageUrl()|escape}"
+							alt="{$issue->getLocalizedCoverImageAltText()|escape|default:''}">
+					</a>
 				</div>
 			{/if}
-		</h2>
-		<div class="description">
-			{$issueDescription|strip_unsafe_html|nl2br}
+
+
+			<div class="card-body py-1 text-center my-0  ">
+				<h2 class="card-title">
+					<a class="title" href="{url|escape op="view" path=$issue->getBestIssueId($currentJournal)}">
+						{if $issueTitle}
+							<div class="text-primary txtSize-4">
+							{$issueSeries|escape}
+						</div>
+						{else}
+							{$issueSeries|escape}
+						{/if}
+					</a>
+				</h2>
+				<div class="txtSize-2 font-04 text-primary-5 N-med">
+					{if $issueTitle}
+						<div class="series lead">
+							{$issueSeries|escape}
+						</div>
+					{/if}
+				</div>
+
+				<div class="description">
+					{$issueDescription|strip_unsafe_html|nl2br}
+				</div>
+			</div>
 		</div>
 	</div>
 </div><!-- .issue-summary -->
