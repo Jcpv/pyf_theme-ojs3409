@@ -21,11 +21,13 @@
 		{include file="frontend/components/notification.tpl" type="warning" messageKey="editor.issues.preview"}
 	{/if}
 
+	{* Jc - Modificando Portada de Indice - CANCELAR LA PARTE INICIAL *}
+	{* Jc - ESTA PARTE SE OBSERVA AL ENTRAR EN C/NUM DEL ARTICULO *}
 	{* Issue introduction area above articles *}
-	<div class="heading row">
+	{* <div class="heading row">
 		{assign var="issueDetailsCol" value="12"}
 
-		{* Issue cover image and description*}
+		{* Issue cover image and description * }
 		{assign var=issueCover value=$issue->getLocalizedCoverImageUrl()}
 		{if $issueCover}
 			{assign var="issueDetailsCol" value="8"}
@@ -44,12 +46,12 @@
 				</div>
 			{/if}
 
-			{* PUb IDs (eg - DOI) *}
+			{* PUb IDs (eg - DOI) * }
 			{foreach from=$pubIdPlugins item=pubIdPlugin}
 				{if $issue->getPublished()}
 					{assign var=pubId value=$issue->getStoredPubId($pubIdPlugin->getPubIdType())}
 				{else}
-					{assign var=pubId value=$pubIdPlugin->getPubId($issue)}{* Preview pubId *}
+					{assign var=pubId value=$pubIdPlugin->getPubId($issue)}{* Preview pubId * }
 				{/if}
 				{if $pubId}
 					{assign var="doiUrl" value=$pubIdPlugin->getResolvingURL($currentJournal->getId(), $pubId)|escape}
@@ -68,7 +70,7 @@
 				{/if}
 			{/foreach}
 
-			{* Published date *}
+			{* Published date * }
 			{if $issue->getDatePublished()}
 				<p class="published">
 					<strong>
@@ -80,7 +82,7 @@
 		</div>
 	</div>
 
-	{* Full-issue galleys *}
+	{* Full-issue galleys * }
 	{if $issueGalleys}
 		<div class="galleys">
 			<div class="page-header">
@@ -95,6 +97,79 @@
 			</div>
 		</div>
 	{/if}
+	*}
+
+
+	{* Jc - Modificando Portada de Indice *}
+	{* Issue introduction area above articles *}
+	<div class="row p-5 bg-fondo-1">
+		<div class="col-jc-4">
+			{* Issue cover image and description*}
+			{assign var=issueCover value=$issue->getLocalizedCoverImageUrl()}
+			{if $issueCover}
+				{assign var="issueDetailsCol" value="8"}
+				<div class="  col-jc-12">
+					<a class="cover" href="{url|escape op="view" page="issue" path=$issue->getBestIssueId()}">
+						<img class="img-responsive" src="{$issueCover|escape}"
+							alt="{$issue->getLocalizedCoverImageAltText()|escape|default:''}">
+					</a>
+				</div>
+			{/if}
+		</div>
+
+		<div class="col-jc-6 text-left px-4">
+			<p class="current_issue_title h1 py-4">
+				{$issue->getIssueIdentification()|strip_unsafe_html}
+			</p>
+			{assign var="issueDetailsCol" value="12"}
+
+			{* Published date *}
+			{if $issue->getDatePublished()}
+				<p class="h4 published">
+					{translate key="submissions.published"}:
+					{$issue->getDatePublished()|escape|date_format:$dateFormatShort}
+				</p>
+			{/if}
+
+			<div class="py-3">
+				{if $issue->hasDescription()}
+					<div class="description">
+						{$issue->getLocalizedDescription()|strip_unsafe_html}
+					</div>
+				{/if}
+
+				{* PUb IDs (eg - DOI) *}
+				{foreach from=$pubIdPlugins item=pubIdPlugin}
+					{if $issue->getPublished()}
+						{assign var=pubId value=$issue->getStoredPubId($pubIdPlugin->getPubIdType())}
+					{else}
+						{assign var=pubId value=$pubIdPlugin->getPubId($issue)}{* Preview pubId *}
+					{/if}
+					{if $pubId}
+						{assign var="doiUrl" value=$pubIdPlugin->getResolvingURL($currentJournal->getId(), $pubId)|escape}
+						<p class="pub_id {$pubIdPlugin->getPubIdType()|escape}">
+							{if $doiUrl}
+								{$pubIdPlugin->getPubIdDisplayType()|escape}:
+								<br/>
+								<a href="{$doiUrl|escape}" class="btn btn-outline-primary txtS-0-90">
+									{$doiUrl}
+								</a>
+							{else}
+								{$pubId}
+							{/if}
+						</p>
+					{/if}
+				{/foreach}
+			</div>
+
+		</div>
+
+
+	</div>
+	{*** /Jc ***}
+
+
+
 
 	{* Articles *}
 	<div class="sections">
