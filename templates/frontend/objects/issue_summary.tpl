@@ -13,8 +13,8 @@
 {* - Jc - Ajustar columna para SM y MD para mostrar Archivos *}
 {* VOLUMENES ANTERIORES *}
 
-<div class="colP-sm-12 colP-md-6 py-3 px-2">
-	<div class="p-4 py-4">
+<div class="colP-sm-12 colP-md-6 colP-lg-4 py-3 px-2">
+	<div class="p-3 py-4">
 
 		{* Retrieve separate entries for $issueTitle and $issueSeries *}
 		{assign var=issueTitle value=$issue->getLocalizedTitle()}
@@ -22,9 +22,9 @@
 		{assign var=issueDescription value=$issue->getLocalizedDescription()}
 
 		{* Show cover image and use cover description *}
-		<div class="card border-0 shadow" style="width: 18rem;">
+		<div class="m-0 p-0" style="width: 18rem;">
 			{if $issue->getLocalizedCoverImage()}
-				<div class="">
+				<div class="m-0 px-2 py-0">
 					<a class="cover" href="{url|escape op="view" path=$issue->getBestIssueId($currentJournal)}">
 						<img class="img-fluid" src="{$issue->getLocalizedCoverImageUrl()|escape}"
 							alt="{$issue->getLocalizedCoverImageAltText()|escape|default:''}">
@@ -33,13 +33,13 @@
 			{/if}
 
 
-			<div class="card-body py-1 text-center my-0  ">
-				<h2 class="card-title">
+			<div class="py-0 text-center m-0  ">
+				<h2 class="card-title pt-3 pb-1 m-0">
 					<a class="title" href="{url|escape op="view" path=$issue->getBestIssueId($currentJournal)}">
 						{if $issueTitle}
 							<div class="text-primary txtSize-4">
-							{$issueSeries|escape}
-						</div>
+								{$issueSeries|escape}
+							</div>
 						{else}
 							{$issueSeries|escape}
 						{/if}
@@ -47,9 +47,11 @@
 				</h2>
 				<div class="txtSize-2 font-04 text-primary-5 N-med">
 					{if $issueTitle}
-						<div class="series lead">
+						{if $issueTitle}
+							{$issueTitle|escape}
+						{else}
 							{$issueSeries|escape}
-						</div>
+						{/if }
 					{/if}
 				</div>
 
