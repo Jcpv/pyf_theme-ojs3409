@@ -15,7 +15,7 @@
  * @uses $showGalleyLinks bool Show galley links to users without access?
  *}
 <div class="issue-toc">
-dddddddd
+
 	{* Indicate if this is only a preview *}
 	{if !$issue->getPublished()}
 		{include file="frontend/components/notification.tpl" type="warning" messageKey="editor.issues.preview"}
