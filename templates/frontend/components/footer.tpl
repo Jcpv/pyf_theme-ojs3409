@@ -75,7 +75,7 @@
 
 				{* - Jc - Ajustar fuente del texto del footer *}
 				{if $pageFooter}
-					<div class="col-md-12 txtSize-3-5 font-11 interlineado-1-75 N-med ">
+					<div class="col-md-12 txtSize-4 font-10 interlineado-1-75 N-med ">
 						{$pageFooter}
 					</div>
 				{/if}

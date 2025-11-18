@@ -177,9 +177,11 @@
 			<section class="section">
 				{if $section.articles}
 					{if $section.title}
-						<div class="page-header">
+						<div class="page-header  border-bottom border-primary py-0">
 							<h2>
-								<small>{$section.title|escape}</small>
+								<span class=" font-02 text-primary-6 N-med txtS-0-90">
+									{$section.title|escape}
+								</span>
 							</h2>
 						</div>
 					{/if}

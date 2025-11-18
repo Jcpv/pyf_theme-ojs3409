@@ -36,7 +36,7 @@
 
 	<div class="colP-12 colP-sm-12 colP-md-11 colP-lg-10">
 		<h3 class="media-heading">
-            <a href="{if $journal}{url journal=$journal->getPath() page="article" op="view" path=$articlePath}{else}{url page="article" op="view" path=$articlePath}{/if}" class="text-primary txtSize-7">
+            <a href="{if $journal}{url journal=$journal->getPath() page="article" op="view" path=$articlePath}{else}{url page="article" op="view" path=$articlePath}{/if}" class="text-primary txtSize-7 font-01">
 				{$article->getLocalizedTitle()|strip_unsafe_html}
 				{* - Jc - Estílo para *}
 				{if $article->getLocalizedSubtitle()}
