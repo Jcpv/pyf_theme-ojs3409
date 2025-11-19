@@ -121,6 +121,8 @@
 					<nav id="nav-menu" class="navbar-collapse collapse p-0 m-0" aria-label="{translate|escape key="common.navigation.site"}" style="font-size: 1.4em!important;">
 						{* Primary navigation menu for current application *}
 						{$primaryMenu}
+						
+						{include file="frontend/components/accessibility.tpl"}
 
 						{* User profile, login, etc, navigation menu*}
 						{* - Jc - Ajustar Menú de LOGIN / Perfil*}

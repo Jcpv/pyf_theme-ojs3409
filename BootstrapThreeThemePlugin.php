@@ -18,6 +18,7 @@ use APP\i18n\AppLocale;
 use PKP\config\Config;
 use PKP\facades\Locale;
 use PKP\plugins\ThemePlugin;
+use PKP\plugins\Hook;
 
 class BootstrapThreeThemePlugin extends ThemePlugin
 {
@@ -168,8 +169,12 @@ class BootstrapThreeThemePlugin extends ThemePlugin
 
 
 
+		// --- Jc ---
 
-		// - Jc -
+		// Complementos de Accesibilidad
+		$this->addStyle('accessibility', 'css/accessibility.css');
+		$this->addScript('accessibility', "js/accessibility.js");
+
 		//Importanto Archivos Js -
 		$this->addScript('slick', 'slick/js/slick.min.js');
 		$this->addScript('slider_indices', 'slick/js/slider_indices.js');
@@ -182,6 +187,7 @@ class BootstrapThreeThemePlugin extends ThemePlugin
 
 		$this->addStyle('bootstrap_4_6_2', '../../../public/journals/css/bootstrap_4_6_2.css');
 		$this->addStyle('all.min', '../../../public/journals/fontawesome/css/all.min.css');
+		//Hook::register('TemplateManager::display', [$this, 'articleView']);
 	}
 
 	/**
@@ -201,6 +207,69 @@ class BootstrapThreeThemePlugin extends ThemePlugin
 	{
 		return __('plugins.themes.bootstrap3.description');
 	}
+
+	/*public function articleView($hookName, $args)
+	{
+		//return ;
+		$templateMgr = $args[0];
+		$template = $args[1];
+		$request = Application::get()->getRequest();
+
+		// Solo actuar en la vista de artículo
+		/*if (strpos($template, 'frontend/pages/article.tpl') === false) {
+			return;
+		}* /
+
+		$facebookid = $this->getOption("facebookid");
+
+		// Meta tag para Facebook
+		if ($facebookid) {
+			$templateMgr->addHeader(
+				'facebookapp',
+				'<meta property="fb:app_id" content="' . htmlspecialchars($facebookid) . '" />'
+			);
+		}
+
+		$templateMgr->assign([
+			'facebookid' => $facebookid,
+		]);
+
+		// Registrar JS (método para OJS 3.4)
+		$pluginPath = $this->getPluginPath();
+
+		$templateMgr->addJavaScript(
+			'highcharts',
+			$request->getBaseUrl() . '/' . $pluginPath . '/highcharts/highcharts.js',
+			['priority' => 1]   // o ['contexts' => ['frontend']]
+		);
+
+		$templateMgr->addJavaScript(
+			'data',
+			$request->getBaseUrl() . '/' . $pluginPath . '/highcharts/modules/data.js'
+		);
+
+		$templateMgr->addJavaScript(
+			'exporting',
+			$request->getBaseUrl() . '/' . $pluginPath . '/highcharts/modules/exporting.js'
+		);
+
+		$templateMgr->addJavaScript(
+			'export-data',
+			$request->getBaseUrl() . '/' . $pluginPath . '/highcharts/modules/export-data.js'
+		);
+
+		$templateMgr->addJavaScript(
+			'facebook-comment',
+			$request->getBaseUrl() . '/' . $pluginPath . '/js/facebook-comment.js'
+		);
+
+		$templateMgr->addJavaScript(
+			'barchar-views',
+			$request->getBaseUrl() . '/' . $pluginPath . '/js/barchar-views.js'
+		); 
+
+		return false;
+	} */
 }
 
 if (!PKP_STRICT_MODE) {
