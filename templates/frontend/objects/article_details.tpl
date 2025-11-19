@@ -20,9 +20,9 @@
 		<div class="alert alert-warning" role="alert">
 			{capture assign="latestVersionUrl"}{url page="article" op="view" path=$article->getBestId()}{/capture}
 			{translate key="submission.outdatedVersion"
-									datePublished=$publication->getData('datePublished')|date_format:$dateFormatShort
-									urlRecentVersion=$latestVersionUrl|escape
-								}
+										datePublished=$publication->getData('datePublished')|date_format:$dateFormatShort
+										urlRecentVersion=$latestVersionUrl|escape
+									}
 		</div>
 	{/if}
 
@@ -117,6 +117,26 @@
 					</div>
 				{/if} {*** /Jc ***}
 
+				<div class="list-group-item bg-fondo-1 m-0 mt-5 px-0 pt-4 border-0 text-dark font-10 txtSize-2" >
+						{* Licensing info *}
+						{if $licenseTerms || $licenseUrl}
+							{if $licenseUrl}
+								{if $ccLicenseBadge}
+									{$ccLicenseBadge} 
+								{else}
+									<a href="{$licenseUrl|escape}" class="copyright text-dark">
+										{if $copyrightHolder}
+											{translate key="submission.copyrightStatement" copyrightHolder=$copyrightHolder copyrightYear=$copyrightYear}
+										{else}
+											{translate key="submission.license"}
+										{/if}
+									</a>
+								{/if}
+							{/if}
+							{$licenseTerms}
+						{/if}
+					</div>
+
 			</section><!-- .article-sidebar -->
 
 
@@ -194,30 +214,10 @@
 						</div>
 					{/if}
 
-					<div class="list-group-item bg-fondo-1 m-0 p-3">
-						<br />
-						{* Licensing info *}
-						{if $licenseTerms || $licenseUrl}
-							{if $licenseUrl}
-								{if $ccLicenseBadge}
-									{$ccLicenseBadge}
-								{else}
-									<a href="{$licenseUrl|escape}" class="copyright">
-										{if $copyrightHolder}
-											{translate key="submission.copyrightStatement" copyrightHolder=$copyrightHolder copyrightYear=$copyrightYear}
-										{else}
-											{translate key="submission.license"}
-										{/if}
-									</a>
-								{/if}
-							{/if}
-							{$licenseTerms}
-						{/if}
-					</div>
-{* MUESTRA COMO CITAR
-{call_hook name="Templates::Article::Details"}
-*}
-					
+					{*  MUESTRA COMO CITAR *}
+					{call_hook name="Templates::Article::Details"}
+
+
 			</section>
 
 
@@ -255,8 +255,7 @@
 				{* Keywords *}
 				{if !empty($publication->getLocalizedData('keywords'))}
 					{* <div class="list-group-item keywords"> *}
-					<span
-						class="h2">{capture assign=translatedKeywords}{translate key="article.subject"}{/capture}
+					<span class="h2">{capture assign=translatedKeywords}{translate key="article.subject"}{/capture}
 						{translate key="semicolon" label=$translatedKeywords}</span>
 					<div class="font-02 txtS-1-05 interlineado-1-75 px-5">
 						<div class="col my-0 py-1 article-abstract">
@@ -442,8 +441,9 @@
 					</div>
 				{/if}
 
-				{* MUESTRA COMO CITAR*}
+				{* MUESTRA COMO CITAR
 				{call_hook name="Templates::Article::Details"}
+				*}
 
 
 			</section><!-- .article-details -->
