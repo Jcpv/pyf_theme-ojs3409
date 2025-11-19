@@ -1,0 +1,16 @@
+.imggrayscale {
+  filter: grayscale(1);
+}
+
+.imginvert {
+  filter: invert(100%);
+}
+
+.linkhighlight {
+  color: #09afff !important;
+  text-decoration: underline #09afff !important;
+}
+
+.pageinvert {
+  filter: invert(100%);
+}
