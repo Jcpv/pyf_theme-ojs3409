@@ -97,3 +97,29 @@ msgstr "United"
 
 msgid "plugins.themes.bootstrap3.options.bootstrapTheme.yeti"
 msgstr "Yeti"
+
+
+# Parametros para accesibility (accesibilidad)
+msgid "plugins.accesibility.title"
+msgstr "Accesibilidad"
+
+msgid "plugins.accesibility.increasefont"
+msgstr "Aumentar fuente"
+
+msgid "plugins.accesibility.decreasefont"
+msgstr "Disminuir fuente"
+
+msgid "plugins.accesibility.pageinvert"
+msgstr "Invertir colores de página"
+
+msgid "plugins.accesibility.imggrayscale"
+msgstr "Imagen en escala de grises"
+
+msgid "plugins.accesibility.imginvert"
+msgstr "Invertir imagen"
+
+msgid "plugins.accesibility.linkhighlight"
+msgstr "Resaltar enlaces"
+
+msgid "plugins.accesibility.reset"
+msgstr "Reinciar"
