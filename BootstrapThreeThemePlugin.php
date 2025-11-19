@@ -172,18 +172,18 @@ class BootstrapThreeThemePlugin extends ThemePlugin
 		// --- Jc ---
 
 		// Complementos de Accesibilidad
-		$this->addStyle('accessibility', 'css/accessibility.css');
-		$this->addScript('accessibility', "js/accessibility.js");
+		$this->addStyle('accessibility', 'apoyo/css/accessibility.css');
+		$this->addScript('accessibility', "apoyo/js/accessibility.js");
 
 		//Importanto Archivos Js -
-		$this->addScript('slick', 'slick/js/slick.min.js');
-		$this->addScript('slider_indices', 'slick/js/slider_indices.js');
+		$this->addScript('slick', 'apoyo/js/slick.min.js');
+		$this->addScript('slider_indices', 'apoyo/js/slider_indices.js');
 
 		// Importando Archivos de Estilo para Slider en bloque
-		$this->addStyle('custom-slick', 'slick/styles/custom-slick.css');
-		$this->addStyle('slick', 'slick/styles/slick.css');
-		$this->addStyle('slick-general', 'slick/styles/slick-general.css');
-		$this->addStyle('slick-theme', 'slick/styles/slick-theme.css');
+		$this->addStyle('custom-slick', 'apoyo/css/custom-slick.css');
+		$this->addStyle('slick', 'apoyo/css/slick.css');
+		$this->addStyle('slick-general', 'apoyo/css/slick-general.css');
+		$this->addStyle('slick-theme', 'apoyo/css/slick-theme.css');
 
 		$this->addStyle('bootstrap_4_6_2', '../../../public/journals/css/bootstrap_4_6_2.css');
 		$this->addStyle('all.min', '../../../public/journals/fontawesome/css/all.min.css');
