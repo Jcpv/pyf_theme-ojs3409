@@ -125,7 +125,7 @@
 						{* User profile, login, etc, navigation menu*}
 						{* - Jc - Ajustar Menú de LOGIN / Perfil*}
 						<div class="pull-md-right">
-							<div class="row">
+							<div class="row p-2">
 								<nav aria-label="{translate|escape key="common.navigation.user"}">
 									{load_menu name="user" id="navigationUser" ulClass="nav nav-pills tab-list pull-right"}
 								</nav>
@@ -135,7 +135,7 @@
 
 						{* Search form *}
 						{if $currentContext}
-							<div class="pull-md-right">
+							<div class="pull-md-right m-0 p-0">
 								{include file="frontend/components/searchForm_simple.tpl"}
 							</div>
 						{/if}
