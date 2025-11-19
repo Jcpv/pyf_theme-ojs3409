@@ -1,0 +1,54 @@
+@charset "utf-8";
+
+
+.slick-dots li button:before {
+    font-size: 24px !Important;
+    color: #191a1b !Important;
+}
+
+.list-group-item,
+.pkp_block .slick-dots li {
+    position: relative; 
+    display: inline-block !Important;
+    padding: 0px 0px !Important;
+    margin-bottom: -1px;
+    background-color: none !Important;
+    border: none !Important;
+}
+
+
+.slick-dots li{
+    width:7px !Important;
+}
+
+
+.slick-slider a:focus {
+    outline-width: 0;
+}
+
+
+
+#sliderContainer{
+    background:white;
+    
+}
+
+.slick-dots{
+    background:white;
+    padding-bottom:10px !important; 
+}
+
+.slick-dots li button {
+    font-size: 0;
+    line-height: 0;
+    display: block;
+    width: 20px;
+    height: 20px;
+    padding: 5px;
+    cursor: pointer;
+    color: #d0343400;
+    border: 0;
+    outline: none;
+ background: white; 
+    padding-bottom:10px;
+}

@@ -1,0 +1,24 @@
+.slick-dots li button:before {
+	font-size: 24px !Important;
+
+}
+
+.list-group-item,
+.pkp_block .slick-dots li {
+	position: relative; 
+	display: inline-block !Important;
+	padding: 0px 0px !Important;
+	margin-bottom: -1px;
+	background-color: none !Important;
+	border: none !Important;
+}
+
+
+.slick-dots li{
+	width:7px !Important;
+}
+
+
+.slick-slider a:focus {
+	outline-width: 0;
+}
