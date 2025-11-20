@@ -20,9 +20,9 @@
 		<div class="alert alert-warning" role="alert">
 			{capture assign="latestVersionUrl"}{url page="article" op="view" path=$article->getBestId()}{/capture}
 			{translate key="submission.outdatedVersion"
-													datePublished=$publication->getData('datePublished')|date_format:$dateFormatShort
-													urlRecentVersion=$latestVersionUrl|escape
-												}
+															datePublished=$publication->getData('datePublished')|date_format:$dateFormatShort
+															urlRecentVersion=$latestVersionUrl|escape
+														}
 		</div>
 	{/if}
 
@@ -454,7 +454,7 @@
 
 		<div class="col-md-12">
 
-			{* References *} {* References AHORA *}
+			{* References *} {* Referencias AHORA *}
 			{if $parsedCitations || $publication->getData('citationsRaw')}
 				<div class="article-references">
 					<p>
@@ -466,8 +466,8 @@
 					</h3>
 					</p>
 
-					<div class="collapse" id="collapseExample">
-						<div class="card card-body">
+					<div class="collapse " id="collapseExample">
+						<div class="bg-fondo-1 px-5 py-3 m-0">
 							{if $parsedCitations}
 								{foreach from=$parsedCitations item="parsedCitation"}
 									<p>{$parsedCitation->getCitationWithLinks()|strip_unsafe_html}
