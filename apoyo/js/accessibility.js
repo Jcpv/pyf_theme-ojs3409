@@ -1,4 +1,6 @@
-
+/*********************************************
+ * GUARDAR / CARGAR CONFIGURACIÓN
+ *********************************************/
 const saveConfig = (config) => {
     localStorage.setItem("liminarConfig", JSON.stringify(config));
 }
@@ -7,20 +9,12 @@ const loadConfig = () => {
     let config = localStorage.getItem('liminarConfig');
 
     if (!config) {
-        const el = document.body;
-        const style = window.getComputedStyle(el, null).getPropertyValue('font-size');
-        const fontSize = parseFloat(style);
-        
-        const liminarConfigDefault = {
-            fontSize,
-            imgClass: [],
-            aClass: [],
-            bodyClass: [],
-        }
-
-        saveConfig(liminarConfigDefault);
-        return liminarConfigDefault;
+        const fontSize = parseFloat(window.getComputedStyle(document.body).fontSize);
+        const defaultConfig = { fontSize, imgClass: [], aClass: [], bodyClass: [] };
+        saveConfig(defaultConfig);
+        return defaultConfig;
     }
+
     return JSON.parse(config);
 }
 
@@ -29,20 +23,25 @@ const resetConfig = () => {
     window.location.reload();
 }
 
+/*********************************************
+ * AJUSTE DE TAMAÑO DE FUENTE
+ *********************************************/
 const sizeFont = (config, incr) => {
     const el = document.body;
 
-    if ( incr ) {
-        const style = window.getComputedStyle(el, null).getPropertyValue('font-size');
+    if (incr) {
+        const style = window.getComputedStyle(el).getPropertyValue('font-size');
         const fontSize = parseFloat(style);
-        // now you have a proper float for the font size (yes, it can be a float, not just an integer)
         config.fontSize = fontSize * incr;
         saveConfig(config);
-    } 
+    }
+
     el.style.fontSize = config.fontSize + 'px';
 }
 
-
+/*********************************************
+ * FUNCIONES ORIGINALES QUE FUNCIONABAN
+ *********************************************/
 const pageInvert = (classname) => {
     const el = document.body;
     const config = loadConfig();
@@ -67,7 +66,6 @@ const pageInvert = (classname) => {
 
     saveConfig(config);
 }
-
 
 const imgClass = (classname) => {
     const config = loadConfig();
@@ -98,7 +96,6 @@ const imgClass = (classname) => {
     saveConfig(config);
 }
 
-
 const aClass = (classname) => {
     const config = loadConfig();
     let aClass = config.aClass.filter((item,index, arrayNew)=>{
@@ -128,55 +125,60 @@ const aClass = (classname) => {
     saveConfig(config);
 }
 
+/*********************************************
+ * MODOS EXCLUSIVOS NUEVOS
+ *********************************************/
+const exclusiveModes = ["darkmode","high-contrast","invert-colors","protanopia","deuteranopia","tritanopia"];
 
+const activateExclusiveMode = (classname) => {
+    const config = loadConfig();
+    const body = document.body;
+
+    // Quitar todos los modos exclusivos activos
+    exclusiveModes.forEach(mode => {
+        if (body.classList.contains(mode)) {
+            body.classList.remove(mode);
+            const btn = document.getElementById(`accessibility-${mode}`);
+            if (btn) btn.classList.remove("bg-danger");
+            config.bodyClass = config.bodyClass.filter(c => c !== mode);
+        }
+    });
+
+    // Activar el nuevo modo
+    body.classList.add(classname);
+    if (!config.bodyClass.includes(classname)) config.bodyClass.push(classname);
+    const active = document.getElementById(`accessibility-${classname}`);
+    if (active) active.classList.add("bg-danger");
+
+    saveConfig(config);
+}
+
+/*********************************************
+ * INICIALIZACIÓN
+ *********************************************/
 window.addEventListener('load', () => {
-    const liminaraccessibility = loadConfig();
-    sizeFont(liminaraccessibility);
+    const config = loadConfig();
 
-    for( const imgclass of liminaraccessibility.imgClass ) {
-        imgClass(imgclass)
-    }
-    for( const aclass of liminaraccessibility.aClass ) {
-        aClass(aclass)
-    }
-    for( const bodyclass of liminaraccessibility.bodyClass ) {
-        pageInvert(bodyclass)
-    }
+    // Aplicar tamaño de fuente
+    sizeFont(config);
 
-    const btnIncrFont = document.getElementById("accessibility-increasefont")
-    if ( btnIncrFont ) {
-        btnIncrFont.addEventListener("click", () => sizeFont(liminaraccessibility, 1.1));
-    }
+    // Restaurar clases guardadas (img, links, body)
+    config.imgClass.forEach(c => imgClass(c));
+    config.aClass.forEach(c => aClass(c));
+    config.bodyClass.forEach(c => pageInvert(c));
 
-    const btnDecrFont = document.getElementById("accessibility-decreasefont")
-    if ( btnDecrFont ) {
-        btnDecrFont.addEventListener("click", () => sizeFont(liminaraccessibility, 0.9));
-    }
-    
-    const btnPageInvert = document.getElementById("accessibility-pageinvert");
-    if ( btnPageInvert ) {
-        btnPageInvert.addEventListener("click", () => pageInvert("pageinvert"));
-    }
+    // Botones existentes
+    document.getElementById("accessibility-increasefont")?.addEventListener("click", () => sizeFont(config, 1.1));
+    document.getElementById("accessibility-decreasefont")?.addEventListener("click", () => sizeFont(config, 0.9));
+    document.getElementById("accessibility-linkhighlight")?.addEventListener("click", () => aClass("linkhighlight"));
+    document.getElementById("accessibility-imggrayscale")?.addEventListener("click", () => imgClass("imggrayscale"));
+    document.getElementById("accessibility-reset")?.addEventListener("click", () => resetConfig());
 
-    const btnReset = document.getElementById("accessibility-reset");
-    if ( btnReset ) {
-        btnReset.addEventListener("click", () => resetConfig());
-    }
-    
-    const btnGrayscale = document.getElementById("accessibility-imggrayscale");
-    if ( btnGrayscale ) {
-        btnGrayscale.addEventListener("click", () => imgClass("imggrayscale"));
-    }
-
-    const btnInvert = document.getElementById("accessibility-imginvert");
-    if ( btnInvert ) {
-        btnInvert.addEventListener("click", () => imgClass("imginvert"));
-    }
-
-    const btnHighlight = document.getElementById("accessibility-linkhighlight");
-    if ( btnHighlight ) {
-        btnHighlight.addEventListener("click", () => aClass("linkhighlight"));
-    }
-
-
+    // Botones de modos exclusivos
+    document.getElementById("accessibility-darkmode")?.addEventListener("click", () => activateExclusiveMode("darkmode"));
+    document.getElementById("accessibility-high-contrast")?.addEventListener("click", () => activateExclusiveMode("high-contrast"));
+    document.getElementById("accessibility-invert-colors")?.addEventListener("click", () => activateExclusiveMode("invert-colors"));
+    document.getElementById("accessibility-protanopia")?.addEventListener("click", () => activateExclusiveMode("protanopia"));
+    document.getElementById("accessibility-deuteranopia")?.addEventListener("click", () => activateExclusiveMode("deuteranopia"));
+    document.getElementById("accessibility-tritanopia")?.addEventListener("click", () => activateExclusiveMode("tritanopia"));
 });

@@ -122,4 +122,4 @@ msgid "plugins.accesibility.linkhighlight"
 msgstr "Resaltar enlaces"
 
 msgid "plugins.accesibility.reset"
-msgstr "Reinciar"
+msgstr "Restablecer accesibilidad"

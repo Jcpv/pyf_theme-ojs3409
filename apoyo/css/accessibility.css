@@ -1,3 +1,75 @@
+.darkmode {
+  background-color: #121212 !important;
+  color: #e4e4e4 !important;
+}
+
+.darkmode a {
+  color: #80caff !important;
+}
+
+.darkmode button,
+.darkmode input,
+.darkmode textarea,
+.darkmode select {
+  background-color: #1e1e1e !important;
+  color: #e4e4e4 !important;
+  border-color: #333 !important;
+}
+
+.darkmode header,
+.darkmode footer,
+.darkmode nav,
+.darkmode section,
+.darkmode article,
+.darkmode div {
+  background-color: #121212 !important;
+  color: #e4e4e4 !important;
+}
+
+.high-contrast {
+  background-color: black !important;
+  color: yellow !important;
+}
+
+.high-contrast a {
+  color: cyan !important;
+}
+
+.high-contrast * {
+  border-color: yellow !important;
+}
+
+
+.invert-colors {
+  filter: invert(1) hue-rotate(180deg) !important;
+}
+
+
+.protanopia {
+  filter: url("#protanopia") !important;
+}
+
+.deuteranopia {
+  filter: url("#deuteranopia") !important;
+}
+
+.tritanopia {
+  filter: url("#tritanopia") !important;
+}
+
+ 
+/* BONUS: CSS para que los íconos se vean mejor */
+.dropdown-item svg {
+    vertical-align: middle;
+    opacity: 0.8;
+    transition: 0.2s ease;
+}
+
+.dropdown-item:hover svg {
+    opacity: 1;
+}
+
+
 .imggrayscale {
   filter: grayscale(1);
 }
