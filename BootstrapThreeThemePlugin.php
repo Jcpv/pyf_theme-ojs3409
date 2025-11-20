@@ -178,6 +178,7 @@ class BootstrapThreeThemePlugin extends ThemePlugin
 		//Importanto Archivos Js -
 		$this->addScript('slick', 'apoyo/js/slick.min.js');
 		$this->addScript('slider_indices', 'apoyo/js/slider_indices.js');
+		$this->addScript('estadisticas', 'apoyo/js/estadisticas.js');
 
 		// Importando Archivos de Estilo para Slider en bloque
 		$this->addStyle('custom-slick', 'apoyo/css/custom-slick.css');
