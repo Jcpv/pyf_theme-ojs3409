@@ -20,9 +20,9 @@
 		<div class="alert alert-warning" role="alert">
 			{capture assign="latestVersionUrl"}{url page="article" op="view" path=$article->getBestId()}{/capture}
 			{translate key="submission.outdatedVersion"
-										datePublished=$publication->getData('datePublished')|date_format:$dateFormatShort
-										urlRecentVersion=$latestVersionUrl|escape
-									}
+													datePublished=$publication->getData('datePublished')|date_format:$dateFormatShort
+													urlRecentVersion=$latestVersionUrl|escape
+												}
 		</div>
 	{/if}
 
@@ -117,25 +117,25 @@
 					</div>
 				{/if} {*** /Jc ***}
 
-				<div class="list-group-item bg-fondo-1 m-0 mt-5 px-0 pt-4 border-0 text-dark font-10 txtSize-2" >
-						{* Licensing info *}
-						{if $licenseTerms || $licenseUrl}
-							{if $licenseUrl}
-								{if $ccLicenseBadge}
-									{$ccLicenseBadge} 
-								{else}
-									<a href="{$licenseUrl|escape}" class="copyright text-dark">
-										{if $copyrightHolder}
-											{translate key="submission.copyrightStatement" copyrightHolder=$copyrightHolder copyrightYear=$copyrightYear}
-										{else}
-											{translate key="submission.license"}
-										{/if}
-									</a>
-								{/if}
+				<div class="list-group-item bg-fondo-1 m-0 mt-5 px-0 pt-4 border-0 text-dark font-10 txtSize-2">
+					{* Licensing info *}
+					{if $licenseTerms || $licenseUrl}
+						{if $licenseUrl}
+							{if $ccLicenseBadge}
+								{$ccLicenseBadge}
+							{else}
+								<a href="{$licenseUrl|escape}" class="copyright text-dark">
+									{if $copyrightHolder}
+										{translate key="submission.copyrightStatement" copyrightHolder=$copyrightHolder copyrightYear=$copyrightYear}
+									{else}
+										{translate key="submission.license"}
+									{/if}
+								</a>
 							{/if}
-							{$licenseTerms}
 						{/if}
-					</div>
+						{$licenseTerms}
+					{/if}
+				</div>
 
 			</section><!-- .article-sidebar -->
 
@@ -282,12 +282,13 @@
 								<div class="row m-0 p-0">
 									{* <h3 class="media-heading biography-author">
 									</h3> *}
+
 									{call_hook name="Templates::Article::Main"}
 
 									{* Usage statistics chart*}
 									{if $activeTheme->getOption('displayStats') != 'none'}
 										{$activeTheme->displayUsageStatsGraph($article->getId())}
-										<section class="item downloads_chart">
+										<section class="colP-12 item downloads_chart ">
 											<h2 class="label">
 												{translate key="plugins.themes.bootstrap3.displayStats.downloads"}
 											</h2>
@@ -300,6 +301,7 @@
 												</div>
 											</div>
 										</section>
+
 									{/if}
 								</div>
 							</div>
