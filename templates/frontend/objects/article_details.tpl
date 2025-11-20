@@ -19,10 +19,7 @@
 	{if $currentPublication->getId() !== $publication->getId()}
 		<div class="alert alert-warning" role="alert">
 			{capture assign="latestVersionUrl"}{url page="article" op="view" path=$article->getBestId()}{/capture}
-			{translate key="submission.outdatedVersion"
-															datePublished=$publication->getData('datePublished')|date_format:$dateFormatShort
-															urlRecentVersion=$latestVersionUrl|escape
-														}
+			{translate key="submission.outdatedVersion" datePublished=$publication->getData('datePublished')|date_format:$dateFormatShort urlRecentVersion=$latestVersionUrl|escape }
 		</div>
 	{/if}
 
@@ -47,10 +44,10 @@
 								{$author->getFullName()|escape}
 							</span>
 							{if $author->getOrcid()}
-								{$orcidIcon}
 								<a href="{$author->getOrcid()|escape}" target="_blank">
-									{* $author->getOrcid()|escape *}
-									<img src="{$publicFilesDir}/../img_web/orcid.png" alt="Orcid" title="Orcid" height="20px">
+								{$orcidIcon}
+									{* $author->getOrcid()|escape 
+									<img src="{$publicFilesDir}/../img_web/orcid.png" alt="Orcid" title="Orcid" height="20px">*}
 								</a>
 							{/if}
 
