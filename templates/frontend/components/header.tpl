@@ -38,6 +38,11 @@
 
 			<div class="container-fluid bg-fondo-oscuro">
 
+				{* - Jc - Ajustar Menu de accesibilidad 2 *}
+				<div class="bg-fondo-1 p-3 m-0 menu-flotante">
+				{include file="frontend/components/accessibility2.tpl"}
+				</div>
+
 				{* - Jc - Ajustar imagen del BANNER *}
 				<div class="row bg-fondo-oscuro pt-5 pb-0 mt-0">
 					<div class="colP-sm-12 colP-md-1" >
@@ -82,7 +87,7 @@
 
 					{* Logo or site title. Only use <h1> heading on the homepage.
 					   Otherwise that should go to the page title. *}
-				{*	{if $requestedOp == 'index'}
+					{*	{if $requestedOp == 'index'}
 						<h1 class="site-name">
 					{else}
 						<div class="site-name">
