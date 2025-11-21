@@ -39,7 +39,7 @@
 			<div class="container-fluid bg-fondo-oscuro">
 
 				{* - Jc - Ajustar Menu de accesibilidad 2 *}
-				<div class="bg-fondo-1 p-3 m-0 menu-flotante">
+				<div class=" p-1 m-0 menu-flotante">
 				{include file="frontend/components/accessibility2.tpl"}
 				</div>
 
@@ -127,7 +127,7 @@
 						{* Primary navigation menu for current application *}
 						{$primaryMenu}
 						
-						{include file="frontend/components/accessibility.tpl"}
+						{* include file="frontend/components/accessibility.tpl" *}
 
 						{* User profile, login, etc, navigation menu*}
 						{* - Jc - Ajustar Menú de LOGIN / Perfil*}

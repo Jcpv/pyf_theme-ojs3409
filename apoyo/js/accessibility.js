@@ -2,11 +2,11 @@
  * GUARDAR / CARGAR CONFIGURACIÓN
  *********************************************/
 const saveConfig = (config) => {
-    localStorage.setItem("liminarConfig", JSON.stringify(config));
+    localStorage.setItem("ojs_pyfConfig", JSON.stringify(config));
 }
 
 const loadConfig = () => {
-    let config = localStorage.getItem('liminarConfig');
+    let config = localStorage.getItem('ojs_pyfConfig');
 
     if (!config) {
         const fontSize = parseFloat(window.getComputedStyle(document.body).fontSize);
@@ -19,7 +19,7 @@ const loadConfig = () => {
 }
 
 const resetConfig = () => {
-    localStorage.removeItem("liminarConfig");
+    localStorage.removeItem("ojs_pyfConfig");
     window.location.reload();
 }
 
@@ -40,12 +40,12 @@ const sizeFont = (config, incr) => {
 }
 
 /*********************************************
- * FUNCIONES ORIGINALES QUE FUNCIONABAN
+ * FUNCIONES INICIALES
  *********************************************/
 const pageInvert = (classname) => {
     const el = document.body;
     const config = loadConfig();
-    let bodyClass = config.bodyClass.filter((item,index, arrayNew)=>{
+    let bodyClass = config.bodyClass.filter((item, index, arrayNew) => {
         return arrayNew.indexOf(item) === index;
     })
     const active = document.getElementById(`accessibility-${classname}`);
@@ -53,15 +53,15 @@ const pageInvert = (classname) => {
 
     if (elements) {
         el.classList.remove(classname);
-        config.bodyClass = bodyClass.filter((item, index, arrayNew)=>{
+        config.bodyClass = bodyClass.filter((item, index, arrayNew) => {
             return arrayNew[index] !== classname;
         });
-        active.classList.remove("bg-danger");
-    } else { 
+        active.classList.remove("btn-danger");
+    } else {
         el.classList.add(classname);
         if (bodyClass.indexOf(classname) < 0) bodyClass.push(classname);
         config.bodyClass = bodyClass;
-        active.classList.add("bg-danger");
+        active.classList.add("btn-danger");
     }
 
     saveConfig(config);
@@ -69,28 +69,28 @@ const pageInvert = (classname) => {
 
 const imgClass = (classname) => {
     const config = loadConfig();
-    let imgClass = config.imgClass.filter((item,index, arrayNew)=>{
+    let imgClass = config.imgClass.filter((item, index, arrayNew) => {
         return arrayNew.indexOf(item) === index;
     });
     const active = document.getElementById(`accessibility-${classname}`);
     const elements = document.getElementsByClassName(classname).length;
     const images = document.getElementsByTagName("img");
-    
+
     Array.from(images, (ele) => {
-        elements ? 
-        ele.classList.remove(classname) :
-        ele.classList.add(classname);
+        elements ?
+            ele.classList.remove(classname) :
+            ele.classList.add(classname);
     })
 
-    if (elements) { 
-        config.imgClass = imgClass.filter((item, index, arrayNew)=>{
+    if (elements) {
+        config.imgClass = imgClass.filter((item, index, arrayNew) => {
             return arrayNew[index] !== classname;
         });
-        active.classList.remove("bg-danger");
-    } else { 
+        active.classList.remove("btn-danger");
+    } else {
         if (imgClass.indexOf(classname) < 0) imgClass.push(classname);
         config.imgClass = imgClass;
-        active.classList.add("bg-danger");
+        active.classList.add("btn-danger");
     }
 
     saveConfig(config);
@@ -98,28 +98,28 @@ const imgClass = (classname) => {
 
 const aClass = (classname) => {
     const config = loadConfig();
-    let aClass = config.aClass.filter((item,index, arrayNew)=>{
+    let aClass = config.aClass.filter((item, index, arrayNew) => {
         return arrayNew.indexOf(item) === index;
     })
     const active = document.getElementById(`accessibility-${classname}`);
     const elements = document.getElementsByClassName(classname).length;
     const links = document.getElementsByTagName("a")
-    
+
     Array.from(links, (ele) => {
-        elements ? 
-        ele.classList.remove(classname) :
-        ele.classList.add(classname);
+        elements ?
+            ele.classList.remove(classname) :
+            ele.classList.add(classname);
     })
 
-    if (elements) { 
-        config.aClass = aClass.filter((item, index, arrayNew)=>{
+    if (elements) {
+        config.aClass = aClass.filter((item, index, arrayNew) => {
             return arrayNew[index] !== classname;
         });
-        active.classList.remove("bg-danger");
-    } else { 
+        active.classList.remove("btn-danger");
+    } else {
         if (aClass.indexOf(classname) < 0) aClass.push(classname);
         config.aClass = aClass;
-        active.classList.add("bg-danger");
+        active.classList.add("btn-danger");
     }
 
     saveConfig(config);
@@ -128,7 +128,7 @@ const aClass = (classname) => {
 /*********************************************
  * MODOS EXCLUSIVOS NUEVOS
  *********************************************/
-const exclusiveModes = ["darkmode","high-contrast","invert-colors","protanopia","deuteranopia","tritanopia"];
+const exclusiveModes = ["darkmode", "high-contrast", "invert-colors", "protanopia", "deuteranopia", "tritanopia", "increasefont", "decreasefont", "linkhighlight", "imggrayscale"]
 
 const activateExclusiveMode = (classname) => {
     const config = loadConfig();
@@ -139,7 +139,7 @@ const activateExclusiveMode = (classname) => {
         if (body.classList.contains(mode)) {
             body.classList.remove(mode);
             const btn = document.getElementById(`accessibility-${mode}`);
-            if (btn) btn.classList.remove("bg-danger");
+            if (btn) btn.classList.remove("btn-danger");
             config.bodyClass = config.bodyClass.filter(c => c !== mode);
         }
     });
@@ -148,9 +148,11 @@ const activateExclusiveMode = (classname) => {
     body.classList.add(classname);
     if (!config.bodyClass.includes(classname)) config.bodyClass.push(classname);
     const active = document.getElementById(`accessibility-${classname}`);
-    if (active) active.classList.add("bg-danger");
+    if (active) active.classList.add("btn-danger");
 
     saveConfig(config);
+
+    console.log(classname)
 }
 
 /*********************************************
@@ -182,3 +184,7 @@ window.addEventListener('load', () => {
     document.getElementById("accessibility-deuteranopia")?.addEventListener("click", () => activateExclusiveMode("deuteranopia"));
     document.getElementById("accessibility-tritanopia")?.addEventListener("click", () => activateExclusiveMode("tritanopia"));
 });
+
+$(function () {
+    $('[data-toggle="tooltip"]').tooltip()
+})

@@ -1,55 +1,100 @@
- <div class="btn-group" role="group" id="accessibility">
-     {* <button class="btn-accesibilidad" aria-label="Abrir menú de accesibilidad">
-         <i class="fa fa-universal-access"></i>sss
-     </button> 
-     <a href=" " class="" title="Accesibilidad">
-         <i class="fas fa-wheelchair"></i>
-     </a>*}
+<div class="btn-toolbar m-0 p-0 ">
+    <div class="collapse mr-2 p-1 bg-warning border" id="area-accesibilidad">
+        <button type="button" class="btn btn-outline-primary border-0 m-0 px-2 py-1" id="accessibility-increasefont"
+            data-toggle="tooltip" data-placement="bottom" title="{translate key="plugins.accesibility.increasefont"}">
+            <span class="material-symbols-outlined text-dark">
+                text_increase
+            </span>
+        </button>
 
-     <button type="button" class="btn btn-outline-info border-0" id="accessibility-increasefont"
-         alt="{translate key="plugins.accesibility.increasefont"}"
-         title="{translate key="plugins.accesibility.increasefont"}">
-         <svg width="18" height="18" viewBox="0 0 24 24" style="margin-right:6px">
-             <path fill="currentColor" d="M5 4v2h6v14h2V6h6V4H5z" />
-         </svg>
-     </button>
+        <button type="button" class="btn btn-outline-primary border-0 m-0 px-2 py-1" id="accessibility-decreasefont"
+            data-toggle="tooltip" data-placement="bottom" title="{translate key="plugins.accesibility.decreasefont"}">
+            <span class="material-symbols-outlined">
+                text_decrease
+            </span>
+        </button>
 
-      <button type="button" class="btn btn-outline-info border-0"  id="accessibility-decreasefont"
-         alt="{translate key="plugins.accesibility.decreasefont"}"
-         title="{translate key="plugins.accesibility.decreasefont"}">
-         <svg width="18" height="18" viewBox="0 0 24 24" style="margin-right:6px">
-             <path fill="currentColor" d="M6 10v2h12v-2H6z" />
-         </svg>
-     </button>
+        <button type="button" class="btn btn-outline-primary border-0 m-0 px-2 py-1" id="accessibility-linkhighlight"
+            data-toggle="tooltip" data-placement="bottom" title="{translate key="plugins.accesibility.linkhighlight"}">
+            <span class="material-symbols-outlined">
+                link
+            </span>
+        </button>
 
-     <button type="button" class="btn btn-outline-info border-0" id="accessibility-linkhighlight"
-         alt="{translate key="plugins.accesibility.linkhighlight"}"
-         title="{translate key="plugins.accesibility.linkhighlight"}">
-         <svg width="18" height="18" viewBox="0 0 24 24" style="margin-right:6px">
-             <path fill="currentColor"
-                 d="M3.9 12A5 5 0 0 1 9 7h4v2H9a3 3 0 1 0 0 6h4v2H9a5 5 0 0 1-5.1-5Zm7.1 1h4a3 3 0 0 0 0-6h-4V5h4a5 5 0 1 1 0 10h-4v-2Z" />
-         </svg>
-     </button>
+        <button type="button" class="btn btn-outline-primary border-0 m-0 px-2 py-1" id="accessibility-imggrayscale"
+            data-toggle="tooltip" data-placement="bottom" title="{translate key="plugins.accesibility.imggrayscale"}">
+            <span class="material-symbols-outlined">
+                monochrome_photos
+            </span>
+        </button>
 
-      <button type="button" class="btn btn-outline-info border-0" id="accessibility-imggrayscale" alt="{translate key="plugins.accesibility.imggrayscale"}"
-         title="{translate key="plugins.accesibility.imggrayscale"}">
-         <svg width="18" height="18" viewBox="0 0 24 24" style="margin-right:6px">
-             <path fill="currentColor" d="M12 3a9 9 0 1 0 9 9h-9V3Z" />
-         </svg>
-     </button>
+        <button type="button" class="btn btn-outline-primary border-0 m-0 px-2 py-1" id="accessibility-darkmode"
+            data-toggle="tooltip" data-placement="bottom" title="Modo oscuro">
+            <span class="material-symbols-outlined">
+                dark_mode
+            </span>
+        </button>
 
-      <button type="button" class="btn btn-outline-info border-0" id="accessibility-darkmode" alt="Modo oscuro" title="Modo oscuro">
-         <svg width="18" height="18" viewBox="0 0 24 24" style="margin-right:6px">
-             <path fill="currentColor" d="M12 3a9 9 0 1 0 9 9a7 7 0 0 1-9-9Z" />
-         </svg>
-     </button>
+        <button type="button" class="btn btn-outline-primary border-0 m-0 px-2 py-1" id="accessibility-high-contrast"
+            data-toggle="tooltip" data-placement="bottom" title="Alto contraste">
+            {*<span class="material-symbols-outlined">
+             contrast
+         </span> *}
+            <span class="material-symbols-outlined">
+                filter_b_and_w
+            </span>
+        </button>
 
-     <button type="button" class="btn btn-outline-info border-0" id="accessibility-reset" alt="{translate key="plugins.accesibility.reset"}"
-         title="{translate key="plugins.accesibility.reset"}">
-         <svg width="18" height="18" viewBox="0 0 24 24" style="margin-right:6px">
-             <path fill="currentColor"
-                 d="M12 5V1L7 6l5 5V7c3.3 0 6 2.7 6 6a6 6 0 0 1-6 6a6 6 0 0 1-5.65-4H4.26A8 8 0 0 0 20 13c0-4.4-3.6-8-8-8Z" />
-         </svg>
-     </button>
+        <button type="button" class="btn btn-outline-primary border-0 m-0 px-2 py-1" id="accessibility-invert-colors"
+            data-toggle="tooltip" data-placement="bottom" title="Invertir colores">
+            <span class="material-symbols-outlined">
+                invert_colors
+            </span>
+        </button>
 
+        <button type="button" class="btn btn-outline-primary border-0 m-0 px-2 py-1" id="accessibility-protanopia"
+            data-toggle="tooltip" data-placement="bottom" title="Protanopia">
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24">
+                <circle cx="12" cy="12" r="10" stroke="#000" stroke-width="3" />
+                <line x1="6" y1="6" x2="18" y2="18" stroke="red" stroke-width="3" />
+            </svg>
+        </button>
+
+        <button type="button" class="btn btn-outline-primary border-0 m-0 px-2 py-1" id="accessibility-deuteranopia"
+            data-toggle="tooltip" data-placement="bottom" title="Deuteranopia">
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none">
+                <circle cx="12" cy="12" r="10" stroke="#000" stroke-width="3" />
+                <line x1="6" y1="6" x2="18" y2="18" stroke="green" stroke-width="3" />
+            </svg>
+        </button>
+
+        <button type="button" class="btn btn-outline-primary border-0 m-0 px-2 py-1" id="accessibility-tritanopia"
+            data-toggle="tooltip" data-placement="bottom" title="Tritanopia">
+            <svg width="22" height="22" viewBox="0 0 24 24">
+                <circle cx="12" cy="12" r="10" stroke="#000" stroke-width="3" />
+                <line x1="6" y1="6" x2="18" y2="18" stroke="blue" stroke-width="3" />
+            </svg>
+        </button>
+
+        <button type="button" class="btn btn-outline-primary border-0 m-0 px-2 py-1" id="accessibility-reset"
+            data-toggle="tooltip" data-placement="bottom" title="{translate key="plugins.accesibility.reset"}">
+            <span class="material-symbols-outlined">
+                settings_backup_restore
+            </span>
+        </button>
+
+        {*<button type="button" class="btn btn-outline-primary border-0 m-0 px-2 py-1" id="accessibility-menu"
+            data-toggle="tooltip" data-placement="bottom" title="Menú de accesibilidad">
+            <span class="material-symbols-outlined">
+                accessible_forward
+            </span>
+        </button> *}
+    </div>
+    <div class="m-0 p-0" data-toggle="tooltip" data-placement="bottom"
+        title="Ver opciones de accesibilidad">
+        <button type="button" class="btn btn-primary border-0 m-0 p-2" data-toggle="collapse"
+            data-target="#area-accesibilidad" aria-expanded="false" aria-controls="area-accesibilidad"> <span
+                class="material-symbols-outlined">accessible_forward</span>
+        </button>
+    </div>
 </div>
