@@ -98,6 +98,18 @@
 
 {load_script context="frontend" scripts=$scripts}
 
+{* --- Jc --- *}
+{* INCLUIR JS DE BOOSTRAP *}
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"
+	integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous">
+</script>
+
+{* --- Jc --- *}
+{* Iconos de Google API, para accesibilidad*}
+{* Los nombres de deben ordenar alfabeticamente*}
+<link rel="stylesheet"
+	href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=accessible_forward,contrast,dark_mode,filter_b_and_w,highlight_keyboard_focus,invert_colors,link,monochrome_photos,settings_backup_restore,text_decrease,text_increase" />
+
 {call_hook name="Templates::Common::Footer::PageFooter"}
 
 {* --- Jc --- *}
