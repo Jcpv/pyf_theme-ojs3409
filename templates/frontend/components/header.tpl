@@ -39,8 +39,8 @@
 			<div class="container-fluid bg-fondo-oscuro">
 
 				{* - Jc - Ajustar Menu de accesibilidad 2 *}
-				<div class=" p-1 m-0 menu-flotante">
-				{include file="frontend/components/accessibility2.tpl"}
+				<div class="bg-fondo-1 p-1 m-0 menu-flotante border">
+				{include file="frontend/components/accessibility.tpl"}
 				</div>
 
 				{* - Jc - Ajustar imagen del BANNER *}

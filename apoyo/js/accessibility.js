@@ -134,7 +134,23 @@ const activateExclusiveMode = (classname) => {
     const config = loadConfig();
     const body = document.body;
 
-    // Quitar todos los modos exclusivos activos
+    const isActive = body.classList.contains(classname);
+
+    // Si el modo ya estaba activo → desactivarlo
+    if (isActive) {
+        body.classList.remove(classname);
+
+        const btn = document.getElementById(`accessibility-${classname}`);
+        if (btn) btn.classList.remove("btn-danger");
+
+        config.bodyClass = config.bodyClass.filter(c => c !== classname);
+        saveConfig(config);
+
+        console.log(`${classname} desactivado`);
+        return; // Evitar continuar con la activación
+    }
+
+    // Si el modo NO estaba activo → desactivar otros modos primero
     exclusiveModes.forEach(mode => {
         if (body.classList.contains(mode)) {
             body.classList.remove(mode);
@@ -147,13 +163,14 @@ const activateExclusiveMode = (classname) => {
     // Activar el nuevo modo
     body.classList.add(classname);
     if (!config.bodyClass.includes(classname)) config.bodyClass.push(classname);
+
     const active = document.getElementById(`accessibility-${classname}`);
     if (active) active.classList.add("btn-danger");
 
     saveConfig(config);
 
-    console.log(classname)
-}
+    console.log(`${classname} activado`);
+};
 
 /*********************************************
  * INICIALIZACIÓN
