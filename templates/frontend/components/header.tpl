@@ -40,7 +40,7 @@
 
 				{* - Jc - Ajustar Menu de accesibilidad 2 *}
 				<div class="bg-fondo-1 p-1 m-0 menu-flotante border">
-				{include file="frontend/components/accessibility.tpl"}
+				{include file="frontend/components/accesibilidad.tpl"}
 				</div>
 
 				{* - Jc - Ajustar imagen del BANNER *}
@@ -127,7 +127,7 @@
 						{* Primary navigation menu for current application *}
 						{$primaryMenu}
 						
-						{* include file="frontend/components/accessibility.tpl" *}
+						{* include file="frontend/components/accesibilidad.tpl" *}
 
 						{* User profile, login, etc, navigation menu*}
 						{* - Jc - Ajustar Menú de LOGIN / Perfil*}

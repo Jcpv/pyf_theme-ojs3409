@@ -172,8 +172,8 @@ class BootstrapThreeThemePlugin extends ThemePlugin
 		// --- Jc ---
 
 		// Complementos de Accesibilidad
-		$this->addStyle('accessibility', 'apoyo/css/accessibility.css');
-		$this->addScript('accessibility', "apoyo/js/accessibility.js");
+		$this->addStyle('accesibilidad', 'apoyo/css/accesibilidad.css');
+		$this->addScript('accesibilidad', "apoyo/js/accesibilidad.js");
 
 		//Importanto Archivos Js -
 		$this->addScript('slick', 'apoyo/js/slick.min.js');
