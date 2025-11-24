@@ -15,6 +15,11 @@ $(document).ready(function () {
     $('#btn-met-leidos-todo').on('click', function () {
         abrirSolo('#multiCollapse-2');
     });
+
+    $('#btn-met-mas-descargado').on('click', function () {
+        abrirSolo('#multiCollapse-2-A');
+    });
+
     $('#btn-met-leidos-30dias').on('click', function () {
         abrirSolo('#multiCollapse-3');
     });
@@ -47,11 +52,10 @@ $(document).ready(function () {
 
 
 function abrirSolo(idAbrir) {
-    const todos = ['#multiCollapse-1', '#multiCollapse-2', '#multiCollapse-3', '#multiCollapse-4', '#multiCollapse-5', '#multiCollapse-6'];
+    const todos = ['#multiCollapse-1', '#multiCollapse-2', '#multiCollapse-2-A', '#multiCollapse-3', '#multiCollapse-4', '#multiCollapse-5', '#multiCollapse-6'];
 
     todos.forEach(function (id) {
         if (id === idAbrir) {
-            $(id).collapse('show'); // abrir el que quiero
             $(id).collapse('show'); // abrir el que quiero
         } else {
             $(id).collapse('hide'); // cerrar los otros
